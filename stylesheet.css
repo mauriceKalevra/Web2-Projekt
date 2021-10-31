@@ -32,9 +32,24 @@ main {
 
 }
 .myNavf {
-	align-items: center;
+	padding: 20px;
 }
 h1 {
 	padding-left: 80px;
 	padding-top: 100px;
+}
+
+.myNav .bg-light {
+    background-color: transparent !important;
+}
+
+.myNavf .bg-light {
+	background-color: transparent !important;
+}
+
+.navbar-nav.navbar-center {
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
+	padding: 20px;
 }
