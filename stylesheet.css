@@ -1,6 +1,40 @@
-h1 {
-	text-align: center;
+.wrapper {
+    height: 100vh;
+    display: flex;
+
+    /* Direction of the items, can be row or column */
+    flex-direction: column;
 }
-p {
-	text-align: center;
+
+header {
+	height: 100x;
+	background-image: url("/data/bgscreen.png");
+	background-size: 100%;
+	
+
+}
+footer {
+    height: 80px;
+	background-color: rgb(45, 45, 121);
+	
+}
+
+main {
+    flex: 1;
+	background-image: url("/data/pexels-pixabay-273209.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.myNav {
+	float: right;
+	padding-right: 200px;
+	padding-top: 30px;
+
+}
+.myNavf {
+	align-items: center;
+}
+h1 {
+	padding-left: 80px;
+	padding-top: 100px;
 }
