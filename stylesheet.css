@@ -35,8 +35,9 @@ main {
 	padding: 20px;
 }
 h1 {
-	padding-left: 80px;
+	padding-left: 300px;
 	padding-top: 100px;
+	font-size: xxx-large;
 }
 
 .myNav .bg-light {
