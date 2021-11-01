@@ -1,6 +1,97 @@
-h1 {
-	text-align: center;
+.wrapper {
+    height: 100vh;
+    display: flex;
+
+    /* Direction of the items, can be row or column */
+    flex-direction: column;
 }
-p {
+
+header {
+	height: 100x;
+	background-image: url("/data/bgscreen.png");
+	background-size: 100%;
+	
+
+}
+footer {
+    height: 100px;
+	background-color: rgba(78,105,122,255);
+	
+}
+
+main1 {
+    flex: 1;
+	background-image: url("/data/pexels-pixabay-273209.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.myNav {
+	float: right;
+	padding-right: 200px;
+	padding-top: 30px;
+
+}
+.myNavf {
+	padding: 20px;
+}
+h1 {
+	padding-left: 300px;
+	padding-top: 100px;
+	font-size: xxx-large;
+}
+
+.myNav .bg-light {
+    background-color: transparent !important;
+	
+}
+
+.bg-light {
+	background-color: transparent !important;
 	text-align: center;
+	justify-content: center !important;
+	font-size: 18px;
+}
+
+.navbar-nav.navbar-center {
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
+	padding-top: 0px;
+	
+}
+
+.tel {
+	position: fixed;
+	padding-left: 293px;
+	padding-top: 50px;
+	font-size: larger;
+
+}
+
+main2 {
+	flex: 1;
+	background-image: url("/data/realesta.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+}
+
+main3 {
+	flex: 1;
+}
+
+main4 {
+	flex: 1;
+}
+
+main5 {
+	flex: 1;
+}
+
+main6 {
+	flex: 1;
+}
+
+main7 {
+	flex: 1;
 }
