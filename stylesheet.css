@@ -71,6 +71,7 @@ main2 {
 	flex: 1;
 	background-image: url("/data/realesta.png");
 	background-size: 100%;
+	background-repeat: no-repeat;
 
 }
 
