@@ -42,17 +42,21 @@ h1 {
 
 .myNav .bg-light {
     background-color: transparent !important;
+	
 }
 
-.myNavf .bg-light {
+.bg-light {
 	background-color: transparent !important;
+	text-align: center;
+	justify-content: center !important;
 }
 
 .navbar-nav.navbar-center {
 	position: absolute;
 	left: 50%;
 	transform: translatex(-50%);
-	padding: 20px;
+	padding-top: 30px;
+	
 }
 
 .tel {
