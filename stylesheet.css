@@ -19,7 +19,7 @@ footer {
 	
 }
 
-main {
+main1 {
     flex: 1;
 	background-image: url("/data/pexels-pixabay-273209.jpg");
 	background-size: 100%;
@@ -65,4 +65,31 @@ h1 {
 	padding-top: 50px;
 	font-size: larger;
 
+}
+
+main2 {
+	flex: 1;
+	background-image: url("/data/realesta.png");
+	background-size: 100%;
+
+}
+
+main3 {
+	flex: 1;
+}
+
+main4 {
+	flex: 1;
+}
+
+main5 {
+	flex: 1;
+}
+
+main6 {
+	flex: 1;
+}
+
+main7 {
+	flex: 1;
 }
