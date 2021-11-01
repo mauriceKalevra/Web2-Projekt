@@ -54,3 +54,11 @@ h1 {
 	transform: translatex(-50%);
 	padding: 20px;
 }
+
+.tel {
+	position: fixed;
+	padding-left: 293px;
+	padding-top: 50px;
+	font-size: larger;
+
+}
