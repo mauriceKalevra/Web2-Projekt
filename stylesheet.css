@@ -92,7 +92,7 @@ p {
 	border: 5px solid;
 	border-radius: 25px;
 	padding: 10px 30px 10px 30px;
-	color: grey;
+	color: rgb(107, 105, 105);
 	background-color: white;
 	cursor: pointer;
 }
