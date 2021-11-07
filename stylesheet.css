@@ -81,14 +81,35 @@ p {
 	width: 200px !important;
 }
 
-main2 {
-	flex: 1;
-	background-image: url("/data/realesta.png");
-	background-size: 100%;
+.jumbotron {
+	background-image: url("img/background-images/pexels-pixabay-273209.jpg");
 	background-repeat: no-repeat;
-
+	background-size: cover;
+	background-position: center;
 }
 
+#logo-text {
+	border: 5px solid;
+	border-radius: 25px;
+	padding: 10px 30px 10px 30px;
+	color: grey;
+	background-color: white;
+	cursor: pointer;
+  }
+
+main2 {
+	flex: 1;
+}
+
+.myrow3 {
+	height: 350px;
+
+	
+}
+
+.myrow4 {
+	height: 100px;
+}
 
 
 
