@@ -34,11 +34,7 @@ main1 {
 .myNavf {
 	padding: 20px;
 }
-h1 {
-	padding-left: 300px;
-	padding-top: 100px;
-	font-size: xxx-large;
-}
+
 
 .myNav .bg-light {
     background-color: transparent !important;
@@ -68,6 +64,22 @@ h1 {
 
 }
 
+.myindexrow {
+	height: 100px;
+}
+
+.myindexrow2 {
+	height: 2px;
+}
+
+p {
+	font-size: large;
+	font-style: italic;
+}
+
+.custom {
+	width: 200px !important;
+}
 
 main2 {
 	flex: 1;
@@ -76,6 +88,8 @@ main2 {
 	background-repeat: no-repeat;
 
 }
+
+
 
 
 main3 {
