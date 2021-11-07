@@ -82,7 +82,7 @@ p {
 }
 
 .jumbotron {
-	background-image: url("img/background-images/pexels-pixabay-273209.jpg");
+	background-image: url("img/background-images/pic2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -95,7 +95,14 @@ p {
 	color: grey;
 	background-color: white;
 	cursor: pointer;
+}
+#logo-subtext {
+	color: white;
+	font-weight: bolder;
+	text-shadow: black 2px 2px 4px;
+	cursor: pointer;
   }
+  
 
 main2 {
 	flex: 1;
