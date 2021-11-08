@@ -65,12 +65,13 @@ main1 {
 }
 
 .myindexrow {
-	height: 100px;
+	height: 80px;
 }
 
 .myindexrow2 {
-	height: 2px;
+	height: 80px;
 }
+
 
 p {
 	font-size: large;
@@ -151,4 +152,12 @@ main6 {
 
 main7 {
 	flex: 1;
+}
+
+main8 {
+	flex:8
+}
+
+main9 {
+	flex:9
 }
