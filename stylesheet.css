@@ -131,7 +131,9 @@ main2 {
 	height: 40px;
 }
 
-
+.myrow6 {
+	height: 100px;
+}
 main3 {
 	flex: 1;
 }
