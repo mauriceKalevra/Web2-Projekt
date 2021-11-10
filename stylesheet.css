@@ -105,6 +105,14 @@ p {
   }
   
 
+
+
+details {
+	text-align: center;
+	height: 100px;
+	padding-top: 20px;
+}
+
 main2 {
 	flex: 1;
 }
@@ -155,3 +163,4 @@ main8 {
 main9 {
 	flex:9
 }
+
