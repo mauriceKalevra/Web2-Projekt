@@ -119,21 +119,15 @@ main2 {
 	height: 100px;
 }
 
+.myrow5 {
+	height: 40px;
+}
 
 
 main3 {
 	flex: 1;
-	background-image: url("BildBiete2.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
-	text-align: left;
 }
-main31 {
-	flex: 1;
-	background-image: url("BildBiete3.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
-}
+
 
 .Immobilie{
 	text-align: center;
