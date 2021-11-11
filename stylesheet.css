@@ -132,9 +132,10 @@ main2 {
 }
 
 .myrow6 {
-	height: 200px;
+	height: 100px;
 }
-table,   {
+
+table   {
 	border:1px solid black;
   }
 
@@ -183,8 +184,8 @@ h1 {
 	text-align: center;
 }
 
-h6 {
+h1 {
 	text-align: center;
-	font-size: xx-large;
+	
 }
 
