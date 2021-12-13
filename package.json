@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/mauriceKalevra/Web2-Projekt/issues"
   },
-  "homepage": "https://github.com/mauriceKalevra/Web2-Projekt#readme"
+  "homepage": "https://github.com/mauriceKalevra/Web2-Projekt#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.4.5",
+    "express": "^4.17.1"
+  }
 }
