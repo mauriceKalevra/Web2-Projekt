@@ -1,0 +1,8 @@
+#ignore JSON files
+*.json
+
+#infore db files
+.*db
+
+#ignore node_modules
+node_modules
