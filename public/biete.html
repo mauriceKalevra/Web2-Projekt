@@ -91,19 +91,26 @@
 						</div>
 				
 				</div>
+
+
+				<!--Form-->
+			
+
+
+			
 				<div class="row myrow4 justify-content-center align-items-center">
 					<div class="col-1">
-						<select>
+						<select id="angebotstyp">
 							<option value=””>Vermieten</option>
 							<option value=””>Verkaufen</option>
 							</select>
 					</div>
 					<div class="col-4">
 
-						<input class="form-control" id="myInput" type="text" placeholder="Wo: Ort, Straße">
+						<input class="form-control" id="ort" type="text" placeholder="Wo: Ort, Straße">
 					</div>
 					<div class="col-1">
-						<select>
+						<select id="objekttyp">
 							<option value=””>Wohnung</option>
 							<option value=””>Haus</option>
 							</select>
@@ -113,36 +120,131 @@
 				
 				<div class="row myrow5 justify-content-center align-items-center">
 						<div class="col-4">
-							<input class="form-control" id="myInput" type="text" placeholder="Preis">
+							<input class="form-control" id="preis" type="text" placeholder="Preis">
 
 						</div>									
 				</div>
 				<div class="row myrow5 justify-content-center align-items-center">
 					<div class="col-4">
-						<input class="form-control" id="myInput" type="text" placeholder="Zimmer">
+						<input class="form-control" id="zimmer" type="text" placeholder="Zimmer">
 
 					</div>		
 				</div>
 				<div class="row myrow5 justify-content-center align-items-center">
 					<div class="col-4">
-						<input class="form-control" id="myInput" type="text" placeholder="Fläche">
+						<input class="form-control" id="flaeche" type="text" placeholder="Fläche">
 
 					</div>		
 					
 				</div>
 				<div class="row myrow5 justify-content-center align-items-center">
 					<div class="col-4">
-						<input class="form-control" id="myInput" type="text" placeholder="Kontakt">
+						<input class="form-control" id="kontakt" type="text" placeholder="Kontakt">
 
 					</div>		
 				</div>
 				<div class="row myrow6 justify-content-end align-items-center">
-					<div class="col-4"><a href="submitted_biete.html"><button type="submit" name="submit" class="btn btn-primary offset-md-1">Submit</button></a></div>
+					<div class="col-4"><a href="#"><button id="saveimmoButton" name="submit" class="btn btn-primary offset-md-1">Submit</button></a></div>
 				</div>
-
+		
 
 				</main3>
+				<script>
+
+		immoModel = [];
+
+		window.addEventListener("DOMContentLoaded", init);
+
+
+		async function init() {
+			registerClickEventForSaveButton();
+		}
+
+		//get Elements via id and trim the values in a new variable
+		function registerClickEventForSaveButton() {
+			const saveButton = document.getElementById("saveimmoButton");
+			saveButton.addEventListener("click", async (clickEvent) => {
+				clickEvent.preventDefault();
+
+				const inangebot = document.getElementById("angebotstyp");
+				//const invalue = inangebot.options[inangebot.selectedIndex].value;
+				const angebot = inangebot.options[inangebot.selectedIndex].text.trim();
+				//const angebot = tangebot.value.trim();
+
+				const inort = document.getElementById("ort");
+				const ort = inort.value.trim();
+
+				const inobjekt = document.getElementById("objekttyp");
+				const objekt = inobjekt.options[inobjekt.selectedIndex].text.trim();
+
+				const inpreis = document.getElementById("preis");
+				const preis = inpreis.value.trim();
+
+				const inzimmer = document.getElementById("zimmer");
+				const zimmer = inzimmer.value.trim();
+
+				const inflaeche = document.getElementById("flaeche");
+				const flaeche = inflaeche.value.trim();
+
+				const inkontakt = document.getElementById("kontakt");
+				const kontakt = inkontakt.value.trim();
 				
+				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
+			});
+		}
+
+
+
+		
+		// Old function! Might be usefull later...
+		function getvalues() {
+			const angebot = document.getElementById("angebotstyp");
+			const ort = document.getElementById("ort");
+			const objekt = document.getElementById("objekttyp");
+			const preis = document.getElementById("preis");
+			const zimmer = document.getElementById("zimmer");
+			const flaeche = document.getElementById("flaeche");
+			const kontakt = document.getElementById("kontakt");
+		}
+
+
+
+		
+
+		async function storeNewimmo(item1, item2, item3, item4, item5, item6, item7) {
+        const randomNumber = Math.random() * 100000;
+        const randomId = Number.parseInt(randomNumber);
+
+        const newimmoItem = {
+          id: randomId,
+          angebot: item1,
+		  ort: item2,
+		  objekt: item3,
+		  preis: item4,
+		  zimmer: item5,
+		  flaeche: item6,
+		  kontakt: item7
+        };
+
+        immoModel.push(newimmoItem);
+
+        await sendImmoItemToBackend(newimmoItem);
+      }
+
+
+	  async function sendImmoItemToBackend(newimmoItem) {
+		  await fetch("/v1/immo/", {
+			  method: "POST",
+			  headers: {
+				  "content-type": "application/json",
+			  },
+			  body: JSON.stringify(newimmoItem)
+		  });
+	  }
+
+
+
+				</script>
 				<!--FOOTER-->
 			</body>
 			<footer>
