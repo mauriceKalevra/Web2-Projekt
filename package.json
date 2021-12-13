@@ -1,0 +1,19 @@
+{
+  "name": "real-estate-albsig",
+  "version": "1.0.0",
+  "description": "webapp for real estate",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauriceKalevra/Web2-Projekt.git"
+  },
+  "author": "Maurice Kalevra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauriceKalevra/Web2-Projekt/issues"
+  },
+  "homepage": "https://github.com/mauriceKalevra/Web2-Projekt#readme"
+}
