@@ -192,6 +192,9 @@
 				const inkontakt = document.getElementById("kontakt");
 				const kontakt = inkontakt.value.trim();
 				
+				const myform = document.getElementById("myform");
+				myform.remove();
+
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
 		}
