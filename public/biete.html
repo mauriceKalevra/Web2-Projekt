@@ -192,14 +192,16 @@
 				const inkontakt = document.getElementById("kontakt");
 				const kontakt = inkontakt.value.trim();
 				
-				const myform = document.getElementById("myform");
-				myform.remove();
+				removeform();
 
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
 		}
 
-
+		function removeform() {
+			const myform = document.getElementById("myform");
+			myform.remove();
+		}
 
 		
 		// Old function! Might be usefull later...
