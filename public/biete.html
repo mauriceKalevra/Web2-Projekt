@@ -79,7 +79,7 @@
 			</header>
 			<body>
 				<!--CONTENT/MAIN-->
-				<main3>
+				<main3 id="main3">
 					<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
 						<div class="container">
 						  <div class="row justify-content-center align-items-center">
@@ -192,15 +192,15 @@
 				const inkontakt = document.getElementById("kontakt");
 				const kontakt = inkontakt.value.trim();
 				
-				removeform();
+				
 
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
 		}
 
 		function removeform() {
-			const myform = document.getElementById("myform");
-			myform.remove();
+			const delform = document.getElementById("myform");
+			delform.remove();
 		}
 
 		
@@ -248,12 +248,24 @@
 			  },
 			  body: JSON.stringify(newimmoItem)
 		  });
-		  const delform = document.getElementById("myform");
+
 		  //delete form
+		  render();
+		  removeform();
 
 		  //render the form input
+		  
 	  }
 
+	  function render() {
+		  const endcard = document.createElement("p");
+		  endcard.innerText = "Vielen Dank für ihre Inserierung!";
+		  endcard.style.textAlign = "center";
+		  const main3 = document.getElementById("main3");
+		  main3.append(endcard);
+		
+
+	  }
 
 
 				</script>
