@@ -11,10 +11,10 @@ app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
 //app.use(logger('dev'));
 
-
+// ließt aus dem public folder die index.hmtl aus und stellt diese dar!
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//Post Request mit Formular Daten.
 app.post("/v1/immo", async (req, res) => {
   const immo = req.body;
 
