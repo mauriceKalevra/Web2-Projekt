@@ -79,7 +79,7 @@
 			</header>
 			<body>
 				<!--CONTENT/MAIN-->
-				<main3>
+				<main3 id="main3">
 					<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
 						<div class="container">
 						  <div class="row justify-content-center align-items-center">
@@ -97,7 +97,9 @@
 			
 
 
-			
+				<form id="myform">
+
+
 				<div class="row myrow4 justify-content-center align-items-center">
 					<div class="col-1">
 						<select id="angebotstyp">
@@ -146,7 +148,8 @@
 				<div class="row myrow6 justify-content-end align-items-center">
 					<div class="col-4"><a href="#"><button id="saveimmoButton" name="submit" class="btn btn-primary offset-md-1">Submit</button></a></div>
 				</div>
-		
+			</form>
+
 
 				</main3>
 				<script>
@@ -189,11 +192,16 @@
 				const inkontakt = document.getElementById("kontakt");
 				const kontakt = inkontakt.value.trim();
 				
+				
+
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
 		}
 
-
+		function removeform() {
+			const delform = document.getElementById("myform");
+			delform.remove();
+		}
 
 		
 		// Old function! Might be usefull later...
@@ -240,8 +248,24 @@
 			  },
 			  body: JSON.stringify(newimmoItem)
 		  });
+
+		  //delete form
+		 
+		  removeform();
+
+		  //render the endcard message
+		   render();
 	  }
 
+	  function render() {
+		  const endcard = document.createElement("p");
+		  endcard.innerText = "Vielen Dank für ihre Inserierung!";
+		  endcard.style.textAlign = "center";
+		  const main3 = document.getElementById("main3");
+		  main3.append(endcard);
+		
+
+	  }
 
 
 				</script>
