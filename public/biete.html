@@ -206,13 +206,13 @@
 		
 		// Old function! Might be usefull later...
 		function getvalues() {
-			const angebot = document.getElementById("angebotstyp");
-			const ort = document.getElementById("ort");
-			const objekt = document.getElementById("objekttyp");
-			const preis = document.getElementById("preis");
-			const zimmer = document.getElementById("zimmer");
-			const flaeche = document.getElementById("flaeche");
-			const kontakt = document.getElementById("kontakt");
+			const Angebot = document.getElementById("angebotstyp");
+			const Ort = document.getElementById("ort");
+			const Objekt = document.getElementById("objekttyp");
+			const Preis = document.getElementById("preis");
+			const Zimmer = document.getElementById("zimmer");
+			const Flaeche = document.getElementById("flaeche");
+			const Kontakt = document.getElementById("kontakt");
 		}
 
 
@@ -258,17 +258,30 @@
 	  }
 
 	  function render() {
+
+		const inAngebot = document.getElementById("angebotstyp");
+		const Angebot = inAngebot.options[inAngebot.selectedIndex].text;
+		const Ort = document.getElementById("ort").value;
+		const inObjekt = document.getElementById("objekttyp");
+		const Objekt = inObjekt.options[inObjekt.selectedIndex].text;
+		const Preis = document.getElementById("preis").value;
+		const Zimmer = document.getElementById("zimmer").value;
+		const Flaeche = document.getElementById("flaeche").value;
+		const Kontakt = document.getElementById("kontakt").value;
 		  
 	var table = document.createElement('table');
 	table.setAttribute("border", 1);
-	for (var i = 1; i < 4; i++){
+	table.align = "center";
+	colitems = ["Angebot","Ort","Objekt", "Preis", "Zimmer", "Fläche", "Kontakt"];
+	rowitems = [Angebot, Ort, Objekt, Preis, Zimmer, Flaeche, Kontakt];
+	for (var i = 1; i < 8; i++){
     var tr = document.createElement('tr');   
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
 
-    var text1 = document.createTextNode('Text1');
-    var text2 = document.createTextNode('Text2');
+    var text1 = document.createTextNode(colitems[i-1]);
+    var text2 = document.createTextNode(rowitems[i-1]);
 
     td1.appendChild(text1);
     td2.appendChild(text2);
