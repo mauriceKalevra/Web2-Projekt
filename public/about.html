@@ -80,22 +80,11 @@
 			<!--CONTENT/MAIN-->
 
 			<main4>
-				<div class="container">
-		<section class="u-align-center u-clearfix u-section-1" id="sec-8338">
-                    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-                      <div class="u-container-style u-group u-group-1">
-                        <div class="u-container-layout u-container-layout-1">
-                          <h2 class="u-text u-text-default u-text-1">Über uns</h2>
-                          <p class="u-text u-text-2">Ob mieten oder vermieten, kaufen oder verkaufen, privat oder gewerblich: Wir sind Deutschlands Nummer 1 rund um Immobilien. Wir unterstützen Menschen auf dem Online-Markt, wenn es um Immobilien geht. </p>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+				<div1>
+					<h2 id="headline">Überschrift</h2>
+					<p id="p1">Paragraph1</p>
 
-					
-				</div>
-				
-
+				</div1>
 			</main4>
 			
 			<!--FOOTER-->
@@ -135,6 +124,22 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+		<script>
+			
+			document.getElementById("headline").innerHTML = "Über Uns";
+			document.getElementById("p1").innerHTML = "Ob mieten oder vermieten, kaufen oder verkaufen, privat oder gewerblich: Wir sind Deutschlands Nummer 1 rund um Immobilien. Wir unterstützen Menschen auf dem Online-Markt, wenn es um Immobilien geht.";
+			document.getElementById("p1").style.margin = "auto";
+			document.getElementById("p1").style.textAlign = "center";
+			document.getElementById("p1").style.marginTop = "300px";
+			document.getElementById("p1").style.width = "60%";
+			document.getElementById("p1").style.backgroundColor = "white";
+			document.getElementById("p1").style.fontStyle = "normal";
+			document.getElementById("p1").style.fontSize = "x-large";
+			document.getElementById("p1").style.borderRadius = "3px 15px 5px 30px";
+			document.body.style.backgroundImage = "url(img/background-images/pic5.jpg)"
+			document.body.style.backgroundSize = "1450px 900px";
+		</script>
 
 	</body>
 </html>
