@@ -191,9 +191,10 @@
 
 				const inkontakt = document.getElementById("kontakt");
 				const kontakt = inkontakt.value.trim();
-				
-				render();
-				removeform();
+
+								
+				//render();
+				//removeform();
 			
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
@@ -235,6 +236,8 @@
 		  kontakt: item7
         };
 
+		render(randomId);
+		removeform();
         immoModel.push(newimmoItem);
 
         await sendImmoItemToBackend(newimmoItem);
@@ -258,7 +261,10 @@
 		   render();
 	  }
 
-	  function render() {
+	  function render(randomId) {
+	
+	//const randomNumber = Math.random() * 100000;
+    //const randomId = Number.parseInt(randomNumber);
 
 	const danktext = document.createElement("h4");
 	danktext.innerText="Vielen Dank für Ihre Inserierung. Folgende Daten haben Sie Eingetragen: "
@@ -300,9 +306,11 @@
     table.appendChild(tr);
 }
 	document.body.appendChild(table);
-
+//const strrandomid = randomId.stringify
 const idinfo = document.createElement("h3");
-idinfo.innerText = "Ihre Referenz Token lautet: ";
+idinfo.innerText = "Ihr token: ";
+const token = document.createElement("span");
+token.innerText = randomId;
 const idinfo2 = document.createElement("h4");
 idinfo2.innerText = "Wichtig! Speichern Sie sich ihren Token um Ihren Eintrag bei Wunsch zu löschen";
 
@@ -310,7 +318,8 @@ idinfo2.innerText = "Wichtig! Speichern Sie sich ihren Token um Ihren Eintrag be
 		  main3.append(danktext);
 		  danktext.append(table);
 		  table.append(idinfo);
-		  idinfo.append(idinfo2);
+		  idinfo.append(token);
+		  token.append(idinfo2);
 
 	  }
 
