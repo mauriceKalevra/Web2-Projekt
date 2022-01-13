@@ -193,8 +193,7 @@
 				const kontakt = inkontakt.value.trim();
 
 								
-				//render();
-				//removeform();
+			
 			
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
@@ -236,7 +235,10 @@
 		  kontakt: item7
         };
 
+		//render dynamic html, endcard message
 		render(randomId);
+
+		//remove form
 		removeform();
         immoModel.push(newimmoItem);
 
@@ -253,12 +255,8 @@
 			  body: JSON.stringify(newimmoItem)
 		  });
 
-		  //delete form
-		 
-		  removeform();
-
-		  //render the endcard message
-		   render();
+		  
+		  
 	  }
 
 	  function render(randomId) {
