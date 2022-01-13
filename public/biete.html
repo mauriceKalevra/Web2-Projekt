@@ -191,9 +191,10 @@
 
 				const inkontakt = document.getElementById("kontakt");
 				const kontakt = inkontakt.value.trim();
-				
-				
 
+								
+			
+			
 				await storeNewimmo(angebot, ort, objekt, preis, zimmer, flaeche, kontakt);
 			});
 		}
@@ -206,13 +207,13 @@
 		
 		// Old function! Might be usefull later...
 		function getvalues() {
-			const angebot = document.getElementById("angebotstyp");
-			const ort = document.getElementById("ort");
-			const objekt = document.getElementById("objekttyp");
-			const preis = document.getElementById("preis");
-			const zimmer = document.getElementById("zimmer");
-			const flaeche = document.getElementById("flaeche");
-			const kontakt = document.getElementById("kontakt");
+			const Angebot = document.getElementById("angebotstyp");
+			const Ort = document.getElementById("ort");
+			const Objekt = document.getElementById("objekttyp");
+			const Preis = document.getElementById("preis");
+			const Zimmer = document.getElementById("zimmer");
+			const Flaeche = document.getElementById("flaeche");
+			const Kontakt = document.getElementById("kontakt");
 		}
 
 
@@ -234,6 +235,11 @@
 		  kontakt: item7
         };
 
+		//render dynamic html, endcard message
+		render(randomId);
+
+		//remove form
+		removeform();
         immoModel.push(newimmoItem);
 
         await sendImmoItemToBackend(newimmoItem);
@@ -249,21 +255,68 @@
 			  body: JSON.stringify(newimmoItem)
 		  });
 
-		  //delete form
-		 
-		  removeform();
-
-		  //render the endcard message
-		   render();
+		  
+		  
 	  }
 
-	  function render() {
-		  const endcard = document.createElement("p");
-		  endcard.innerText = "Vielen Dank für ihre Inserierung!";
-		  endcard.style.textAlign = "center";
-		  const main3 = document.getElementById("main3");
-		  main3.append(endcard);
-		
+	  function render(randomId) {
+	
+	//const randomNumber = Math.random() * 100000;
+    //const randomId = Number.parseInt(randomNumber);
+
+	const danktext = document.createElement("h4");
+	danktext.innerText="Vielen Dank für Ihre Inserierung. Folgende Daten haben Sie Eingetragen: "
+	danktext.align = "center";
+		const inAngebot = document.getElementById("angebotstyp");
+		const Angebot = inAngebot.options[inAngebot.selectedIndex].text;
+		const Ort = document.getElementById("ort").value;
+		const inObjekt = document.getElementById("objekttyp");
+		const Objekt = inObjekt.options[inObjekt.selectedIndex].text;
+		const Preis = document.getElementById("preis").value;
+		const Zimmer = document.getElementById("zimmer").value;
+		const Flaeche = document.getElementById("flaeche").value;
+		const Kontakt = document.getElementById("kontakt").value;
+		  
+	var table = document.createElement('table');
+	//table.setAttribute("border", 1);
+	//table.width = "10%";
+	table.align = "center";
+	colitems = ["Angebotstyp:","Ort:","Objekttyp:", "Preis:", "Zimmer:", "Fläche:", "Kontakt:"];
+	rowitems = [Angebot, Ort, Objekt, Preis, Zimmer, Flaeche, Kontakt];
+	for (var i = 1; i < 8; i++){
+    var tr = document.createElement('tr');   
+
+    var td1 = document.createElement('td');
+	var td2 = document.createElement('td');
+	td1.width = "60%";
+	td2.width = "60%";
+	td1.align = "left";
+	td2.align = "left";
+
+    var text1 = document.createTextNode(colitems[i-1]);
+    var text2 = document.createTextNode(rowitems[i-1]);
+
+    td1.appendChild(text1);
+    td2.appendChild(text2);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    table.appendChild(tr);
+}
+	document.body.appendChild(table);
+const idinfo = document.createElement("h3");
+idinfo.innerText = "Ihr token: ";
+const token = document.createElement("span");
+token.innerText = randomId;
+const idinfo2 = document.createElement("h4");
+idinfo2.innerText = "Wichtig! Speichern Sie sich ihren Token um Ihren Eintrag bei Wunsch zu löschen";
+
+		const main3 = document.getElementById("main3");
+		  main3.append(danktext);
+		  danktext.append(table);
+		  table.append(idinfo);
+		  idinfo.append(token);
+		  token.append(idinfo2);
 
 	  }
 

@@ -1,4 +1,6 @@
 var express = require('express');
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 var port = 1337;
 var path = require('path');
 var immodb = require('better-sqlite3')("immobilie.db"); 
@@ -22,6 +24,12 @@ app.post("/v1/immo", async (req, res) => {
 
   return res.status(200).send();
 
+})
+
+app.get("/biete", async (req, res) => {
+  res.sendFile('faq.html', {
+    root: path.join(__dirname, './public')
+  })
 })
 
 app.listen(port, () => {
