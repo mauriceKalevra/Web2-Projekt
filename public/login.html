@@ -99,6 +99,15 @@
 				main8.append(head);
 				}
 
+			async function loadimmofrombackend() {
+				const response = await fetch("http://localhost:1337/v1/angebote");
+				const immoJson = await response.json();
+
+				if(immoJson) {
+					immomodel = immoJson;
+				}
+			}
+
 			</script>
 			
 			<!--FOOTER-->
