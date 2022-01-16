@@ -79,18 +79,27 @@
 
 			<!--CONTENT/MAIN-->
 
-			<main8>
-                <section class="only-text-container">
-                    <div style="margin: 0 auto; width: 100%; height: 700px;">
-                    <object type="text/html" data="/data/login/index.html" style="width: 100%; height: 100%; margin: 0%;">
-                    </object>
-                    
-                    </div>
-
-                </section>
+		<main8 id="main8">	
+					
 
 
 			</main8>
+
+				<script>
+			window.addEventListener("DOMContentLoaded", rendering);
+
+			
+
+				function rendering() {
+			
+				const main8 = document.getElementById("main8");
+				const head = document.createElement("h1");
+				head.innerText = "Hier finden Sie alle Angebote";
+				head.align = "center";
+				main8.append(head);
+				}
+
+			</script>
 			
 			<!--FOOTER-->
 			
