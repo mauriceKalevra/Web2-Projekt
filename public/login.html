@@ -104,6 +104,7 @@
 				const main8 = document.getElementById("main8");
 				const head = document.createElement("h1");
 				head.innerText = "Hier finden Sie alle Angebote";
+				head.align = "center";
 
 
 
@@ -112,7 +113,6 @@
 
 				const newimmoItem = createNewimmoItem(immoitem);
 												
-				head.align = "center";
 				main8.append(head);
 				head.append(newimmoItem);
 
@@ -135,7 +135,10 @@
 			function createNewimmoItem(immoitem) {
 
 					//console.log(immoitem);
-					newImmotext = JSON.stringify(immoitem);
+					
+					
+					
+					newImmotext = immoitem;
 					console.log(JSON.stringify(immoitem));
 					//console.log("Hello world");
 					const newImmoitem = document.createElement("p");
