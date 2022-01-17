@@ -95,9 +95,9 @@
 		document.getElementById("paragraph1").style.textAlign = "center";
 		document.getElementById("paragraph1").style.fontStyle = "normal";
 	
-		function reqListener() {
+		function privacytext() {
 		var request = new XMLHttpRequest();
-		request.open("GET", "/data/datenschutz/index.html");
+		request.open("GET", "http://localhost:1337/data/datenschutz/index.html");
 		request.addEventListener('load', function(event) {
 			document.getElementById("paragraph1").innerHTML = request.responseText
    			if (request.status >= 200 && request.status < 300) {
@@ -109,9 +109,8 @@
 		request.send();
 	}
 
-	window.onload(reqListener());
+	window.onload(privacytext());
 		</script>
 
 	</body>
 </html>
-
