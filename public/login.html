@@ -86,18 +86,39 @@
 			</main8>
 
 				<script>
-			window.addEventListener("DOMContentLoaded", rendering);
+
+		let immomodel = [];
+
+      	window.addEventListener("DOMContentLoaded", init);
 
 			
+
+				async function init() {
+					await loadimmofrombackend();
+					rendering();
+				}
+
 
 				function rendering() {
-			
+
 				const main8 = document.getElementById("main8");
 				const head = document.createElement("h1");
 				head.innerText = "Hier finden Sie alle Angebote";
+
+
+
+				immomodel.forEach((immoitem) => {
+				//console.log(immoitem);
+
+				const newimmoItem = createNewimmoItem(immoitem);
+												
 				head.align = "center";
 				main8.append(head);
+				head.append(newimmoItem);
+
+					});
 				}
+
 
 			async function loadimmofrombackend() {
 				const response = await fetch("http://localhost:1337/v1/angebote");
@@ -105,13 +126,30 @@
 
 				if(immoJson) {
 					immomodel = immoJson;
+					//console.log(immomodel);
 				}
 			}
+
+
+
+			function createNewimmoItem(immoitem) {
+
+					//console.log(immoitem);
+					newImmotext = JSON.stringify(immoitem);
+					console.log(JSON.stringify(immoitem));
+					//console.log("Hello world");
+					const newImmoitem = document.createElement("p");
+					newImmoitem.innerText = newImmotext;
+					newImmoitem.align = "center";
+
+					return newImmoitem;
+
+				}
 
 			</script>
 			
 			<!--FOOTER-->
-			
+		</body>
 			<footer>
 				
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
