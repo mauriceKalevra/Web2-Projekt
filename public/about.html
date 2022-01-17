@@ -17,11 +17,10 @@
 		//
 		//some local scripts
 		//
-		
 		</script>
 	</head>
 
-	<body>
+	<body background="/img/background-images/pic5.jpg">
     
 		<div class="wrapper">
 			
@@ -128,18 +127,30 @@
 		<script>
 			
 			document.getElementById("headline").innerHTML = "Über Uns";
-			document.getElementById("p1").innerHTML = "Ob mieten oder vermieten, kaufen oder verkaufen, privat oder gewerblich: Wir sind Deutschlands Nummer 1 rund um Immobilien. Wir unterstützen Menschen auf dem Online-Markt, wenn es um Immobilien geht.";
 			document.getElementById("p1").style.margin = "auto";
 			document.getElementById("p1").style.textAlign = "center";
 			document.getElementById("p1").style.marginTop = "300px";
-			document.getElementById("p1").style.width = "60%";
 			document.getElementById("p1").style.backgroundColor = "white";
 			document.getElementById("p1").style.fontStyle = "normal";
-			document.getElementById("p1").style.fontSize = "x-large";
-			document.getElementById("p1").style.borderRadius = "3px 15px 5px 30px";
-			document.body.style.backgroundImage = "url(img/background-images/pic5.jpg)"
+			document.getElementById("p1").style.width = "80%";
+			document.getElementById("p1").style.borderRadius = "3px 15px 5px 30px"; 
 			document.body.style.backgroundSize = "1450px 900px";
+			
+			function abouttext() {
+			var request = new XMLHttpRequest();
+			request.open("GET", "http://localhost:1337/data/about/index.html");
+			request.addEventListener('load', function(event) {
+			document.getElementById("p1").innerHTML = request.responseText
+   			if (request.status >= 200 && request.status < 300) {
+      			console.log(request.responseText);
+  			} else {
+     			console.warn(request.statusText, request.responseText);
+   			}
+			});
+			request.send();
+			}
+			window.onload(abouttext());
+		
 		</script>
-
 	</body>
 </html>
