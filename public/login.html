@@ -112,9 +112,11 @@
 				//console.log(immoitem);
 
 				const newimmoItem = createNewimmoItem(immoitem);
-												
+				const br = document.createElement("br");
 				main8.append(head);
 				head.append(newimmoItem);
+				newimmoItem.append(br);
+
 
 					});
 				}
@@ -134,18 +136,47 @@
 
 			function createNewimmoItem(immoitem) {
 
-					//console.log(immoitem);
+					console.log(immoitem);
 					
 					
 					
 					newImmotext = JSON.stringify(immoitem);
 					//console.log(JSON.stringify(immoitem));
 					//console.log("Hello world");
-					const newImmoitem = document.createElement("p");
-					newImmoitem.innerText = newImmotext;
-					newImmoitem.align = "center";
+	var table = document.createElement('table');
+	//table.setAttribute("border", 1);
+	//table.width = "10%";
+	table.align = "center";
+	
+	colitems = ["Angebotstyp:","Ort:","Objekttyp:", "Preis:", "Zimmer:", "Fläche:", "Kontakt:"];
+	objectitems = Object.entries(immoitem);
+	//rowitems = [Angebot, Ort, Objekt, Preis, Zimmer, Flaeche, Kontakt];
+	//const newline = document.createElement("br");							
+	//table.appendChild(newline);
+	for (var i = 1; i < 8; i++){
+    var tr = document.createElement('tr');   
 
-					return newImmoitem;
+    var td1 = document.createElement('td');
+	var td2 = document.createElement('td');
+	td1.width = "400px";
+	td2.width = "400px";
+	td1.align = "left";
+	td2.align = "left";
+
+    var text1 = document.createTextNode(colitems[i-1]);
+    var text2 = document.createTextNode(objectitems[i][1]);
+
+
+    td1.appendChild(text1);
+    td2.appendChild(text2);
+	
+
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    table.appendChild(tr);
+}
+
+					return table;
 
 				}
 
