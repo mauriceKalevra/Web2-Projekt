@@ -131,18 +131,30 @@
 
 
 			function rendertoken() {
-				const Token = document.getElementById("tokenb");
-				const mytoken = Token.value;
+				const Token = document.getElementById("tokenid");
+				const mytoken = Token.value+"."+0;
 				const main81 = document.getElementById("main8.1"); 
+				idvals = Object.values(tokenmodel);
+				//console.log(idvals);
 				//console.log(mytoken);
-				Tokenitems = Object.entries(tokenmodel);
-				mytokenItems = JSON.stringify(tokenmodel)
-				const mytokenitem = document.createElement("p");
-				mytokenitem.innerText = Tokenitems;
-				mytokenitem.align = "center";
-				main81.append(mytokenItems);
+				myids = [];
+				tokenmodel.forEach((tokenid) => {
+					//console.log(Object.values(tokenid)[0]);
+					//console.log(mytoken);
+					if (Object.values(tokenid)[0]==mytoken) {
+						//console.log(Object.values(tokenid))
+						myids.push(Object.values(tokenid))
+						console.log(myids)
+					}
+					else {
+						//console.log("nope");
 
-			
+					}
+					//myids.push(Object.values(tokenid)[0])
+					//console.log(Object.values(tokenid)[0])
+				});
+
+				//console.log(myids);
 			
 			}
 
