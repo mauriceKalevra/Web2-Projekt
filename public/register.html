@@ -134,7 +134,7 @@
 				const Token = document.getElementById("tokenid");
 				const mytoken = Token.value+"."+0;
 				const main81 = document.getElementById("main8.1"); 
-				idvals = Object.values(tokenmodel);
+				//idvals = Object.values(tokenmodel);
 				//console.log(idvals);
 				//console.log(mytoken);
 				myids = [];
@@ -144,15 +144,49 @@
 					if (Object.values(tokenid)[0]==mytoken) {
 						//console.log(Object.values(tokenid))
 						myids.push(Object.values(tokenid))
-						console.log(myids)
-					}
-					else {
-						//console.log("nope");
+						console.log(Object.values(tokenid))
+
+						//render	
+						var table = document.createElement('table');
+	//table.setAttribute("border", 1);
+	//table.width = "10%";
+	table.align = "center";
+	colitems = ["Angebotstyp:","Ort:","Objekttyp:", "Preis:", "Zimmer:", "Fläche:", "Kontakt:"];
+	rowitems = Object.values(tokenid);
+	for (var i = 1; i < 8; i++){
+    var tr = document.createElement('tr');   
+
+    var td1 = document.createElement('td');
+	var td2 = document.createElement('td');
+	td1.width = "60%";
+	td2.width = "60%";
+	td1.align = "left";
+	td2.align = "left";
+    var text1 = document.createTextNode(colitems[i-1]);
+    var text2 = document.createTextNode(rowitems[i]);
+
+    td1.appendChild(text1);
+    td2.appendChild(text2);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    table.appendChild(tr);
+}
+main81.appendChild(table);
 
 					}
+				
+				
+					
 					//myids.push(Object.values(tokenid)[0])
 					//console.log(Object.values(tokenid)[0])
 				});
+				
+						/*const nothing = document.createElement("h2");
+						nothing.innerText = "Keine Einträge für diesen Token";
+						nothing.align = "center";
+						main81.appendChild(nothing);
+					*/
 
 				//console.log(myids);
 			
