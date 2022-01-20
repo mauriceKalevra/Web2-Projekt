@@ -34,6 +34,15 @@ app.get("/v1/angebote", async (req, res) => {
 
   })
 
+//get request für Alle MeineAngebote
+app.get("/v1/angebote", async (req, res) => {
+  const immodaten = immodb.prepare("SELECT * FROM Immobilie").all();
+
+  return res.status(200).send(immodaten);
+
+})
+
+
 
 
 app.get("/biete", async (req, res) => {

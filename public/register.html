@@ -79,7 +79,7 @@
 
 			<!--CONTENT/MAIN-->
 
-			<main8>
+			<main8 id="main8.1">
 
 				<main3 id="main3">
 					<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
@@ -98,13 +98,75 @@
 
 					<h1>Hier finden Sie Ihre Inserate</h1>
 					<p>Bitte geben Sie hier ihren Token ein um Ihre Inserate Abzurufen</p>
-					<input type="text"><button id="token">Submit</button>
+					<input type="text" id="tokenid" placeholder="TokenId"><button id="tokenb">Submit</button>
 				</div>
   				
 
                 
 
 			</main8>
+			<script>
+
+				let tokenmodel = [];
+				
+
+				window.addEventListener("DOMContentLoaded", init);
+
+			async function init() {
+				await getTokenitem();
+				//rendertoken();
+
+			}
+
+
+			async function getTokenitem() {
+				const tokenbutton = document.getElementById("tokenb");
+				tokenbutton.addEventListener("click", async (clickEvent) => {
+					clickEvent.preventDefault();
+
+					await loadtokenfrombackend();
+					rendertoken();
+				})
+			}
+
+
+			function rendertoken() {
+				const Token = document.getElementById("tokenb");
+				const mytoken = Token.value;
+				const main81 = document.getElementById("main8.1"); 
+				//console.log(mytoken);
+				Tokenitems = Object.entries(tokenmodel);
+				mytokenItems = JSON.stringify(tokenmodel)
+				const mytokenitem = document.createElement("p");
+				mytokenitem.innerText = Tokenitems;
+				mytokenitem.align = "center";
+				main81.append(mytokenItems);
+
+			
+			
+			}
+
+
+
+
+
+
+
+
+			async function loadtokenfrombackend() {
+				const response = await fetch("http://localhost:1337/v1/angebote");
+				const TokenJson = await response.json();
+
+				if(TokenJson) {
+					tokenmodel = TokenJson;
+					//console.log(immomodel);
+				}
+			}
+
+
+
+
+			</script>
 			
 			<!--FOOTER-->
 			
