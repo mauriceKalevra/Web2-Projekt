@@ -136,6 +136,8 @@
 				})
 				deltokenbutton.addEventListener("click", async (clickEvent) => {
 					clickEvent.preventDefault();
+					await loadtokenfrombackend();
+					//await rendertoken();
 					deleteTokenItem();
 				})
 
@@ -144,6 +146,12 @@
 
 
 			async function deleteTokenItem() {
+				const mtable = document.getElementById("mytable");
+				const delmessage = document.createElement("p");
+				delmessage.align = "center";
+				delmessage.innerText = "Sie haben dieses Inserat gelöscht!";
+				//rendertoken();
+				mtable.append(delmessage);
 				const Token = document.getElementById("tokenid").value;
 				const mytoken = Token+".0";
 				console.log(mytoken);
@@ -179,6 +187,7 @@
 	//table.setAttribute("border", 1);
 	//table.width = "10%";
 	table.align = "center";
+	table.id = "mytable";
 	colitems = ["Angebotstyp:","Ort:","Objekttyp:", "Preis:", "Zimmer:", "Fläche:", "Kontakt:"];
 	rowitems = Object.values(tokenid);
 	for (var i = 1; i < 8; i++){
