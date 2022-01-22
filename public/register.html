@@ -79,18 +79,177 @@
 
 			<!--CONTENT/MAIN-->
 
-			<main8>
-                <section class="only-text-container">
-                    <div style="margin: 0 auto; width: 100%; height: 700px;">
-                    <object type="text/html" data="/data/register/index.html" style="width: 100%; height: 100%; margin: 0%;">
-                    </object>
-                    
-                    </div>
+			<main8 id="main8.1">
 
-                </section>
+				<main3 id="main3">
+					<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
+						<div class="container">
+						  <div class="row justify-content-center align-items-center">
+							<h1 id="logo-text">Meine Angebote</h1>
+						  </div>
+						  <div class="row justify-content-center align-items-center">
+							<p id="logo-subtext">Ihre Inserate</p>
+						  </div>
+						</div>
+				
+				</div>
+				
+				<div class="container">
 
+					<h1>Hier finden Sie Ihre Inserate</h1>
+					<p>Bitte geben Sie hier ihren Token ein um Ihre Inserate Abzurufen</p>
+					<input type="text" id="tokenid" placeholder="TokenId"><button id="tokenb">Submit</button><button id="deltokenb">Löschen</button>
+				</div>
+  				
+
+                
 
 			</main8>
+			<script>
+
+				let tokenmodel = [];
+				//const Token = document.getElementById("tokenid").value;
+				//const mytoken = Token+".0";
+
+				window.addEventListener("DOMContentLoaded", init);
+
+				
+
+			async function init() {
+				await getTokenitem();
+
+				//rendertoken();
+
+			}
+
+
+			async function getTokenitem() {
+				const tokenbutton = document.getElementById("tokenb");
+				const deltokenbutton = document.getElementById("deltokenb");
+			
+
+				tokenbutton.addEventListener("click", async (clickEvent) => {
+					clickEvent.preventDefault();
+
+					await loadtokenfrombackend();
+					rendertoken();
+				})
+				deltokenbutton.addEventListener("click", async (clickEvent) => {
+					clickEvent.preventDefault();
+					await loadtokenfrombackend();
+					//await rendertoken();
+					deleteTokenItem();
+				})
+
+
+			}
+
+
+			async function deleteTokenItem() {
+				const mtable = document.getElementById("mytable");
+				const delmessage = document.createElement("p");
+				delmessage.align = "center";
+				delmessage.innerText = "Sie haben dieses Inserat gelöscht!";
+				//rendertoken();
+				mtable.append(delmessage);
+				const Token = document.getElementById("tokenid").value;
+				const mytoken = Token+".0";
+				console.log(mytoken);
+
+				const delURL = "/v1/immo/" + mytoken;
+				await fetch(delURL, {
+					method: "DELETE"
+				});
+
+
+
+			}
+
+		
+			function rendertoken() {
+				const Token = document.getElementById("tokenid").value;
+				const mytoken = Token+".0";
+				const main81 = document.getElementById("main8.1"); 
+				//idvals = Object.values(tokenmodel);
+				//console.log(idvals);
+				//console.log(mytoken);
+				myids = [];
+				tokenmodel.forEach((tokenid) => {
+					//console.log(Object.values(tokenid)[0]);
+					//console.log(mytoken);
+					if (Object.values(tokenid)[0]==mytoken) {
+						//console.log(Object.values(tokenid))
+						myids.push(Object.values(tokenid))
+						console.log(Object.values(tokenid))
+
+						//render	
+						var table = document.createElement('table');
+	//table.setAttribute("border", 1);
+	//table.width = "10%";
+	table.align = "center";
+	table.id = "mytable";
+	colitems = ["Angebotstyp:","Ort:","Objekttyp:", "Preis:", "Zimmer:", "Fläche:", "Kontakt:"];
+	rowitems = Object.values(tokenid);
+	for (var i = 1; i < 8; i++){
+    var tr = document.createElement('tr');   
+
+    var td1 = document.createElement('td');
+	var td2 = document.createElement('td');
+	td1.width = "60%";
+	td2.width = "60%";
+	td1.align = "left";
+	td2.align = "left";
+    var text1 = document.createTextNode(colitems[i-1]);
+    var text2 = document.createTextNode(rowitems[i]);
+
+    td1.appendChild(text1);
+    td2.appendChild(text2);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    table.appendChild(tr);
+}
+main81.appendChild(table);
+
+					}
+				
+				
+					
+					//myids.push(Object.values(tokenid)[0])
+					//console.log(Object.values(tokenid)[0])
+				});
+				
+						/*const nothing = document.createElement("h2");
+						nothing.innerText = "Keine Einträge für diesen Token";
+						nothing.align = "center";
+						main81.appendChild(nothing);
+					*/
+
+				//console.log(myids);
+			
+			}
+
+
+
+
+
+
+
+
+			async function loadtokenfrombackend() {
+				const response = await fetch("http://localhost:1337/v1/angebote");
+				const TokenJson = await response.json();
+
+				if(TokenJson) {
+					tokenmodel = TokenJson;
+					//console.log(immomodel);
+				}
+			}
+
+
+
+
+			</script>
 			
 			<!--FOOTER-->
 			
@@ -98,7 +257,7 @@
 				
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
 						<a class="navbar-brand" href="#"></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						  <span class="navbar-toggler-icon"></span>
 						</button>
 	

@@ -1,6 +1,7 @@
 var express = require('express');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
+const { IncomingMessage } = require('http');
 var port = 1337;
 var path = require('path');
 var immodb = require('better-sqlite3')("immobilie.db"); 
@@ -25,6 +26,26 @@ app.post("/v1/immo", async (req, res) => {
   return res.status(200).send();
 
 })
+
+//get request für Alle Angebote
+app.get("/v1/angebote", async (req, res) => {
+    const immodaten = immodb.prepare("SELECT * FROM Immobilie").all();
+
+    return res.status(200).send(immodaten);
+
+  })
+
+//delete ImmoItem via id
+app.delete("/v1/immo/:mytoken", async (req, res) => {
+  let mytoken = req.params["mytoken"];
+
+  immodb.prepare("DELETE FROM Immobilie WHERE id =?").run(mytoken);
+
+  return res.status(200).send();
+});
+
+
+
 
 app.get("/biete", async (req, res) => {
   res.sendFile('faq.html', {
