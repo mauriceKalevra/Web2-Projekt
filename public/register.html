@@ -98,7 +98,7 @@
 
 					<h1>Hier finden Sie Ihre Inserate</h1>
 					<p>Bitte geben Sie hier ihren Token ein um Ihre Inserate Abzurufen</p>
-					<input type="text" id="tokenid" placeholder="TokenId"><button id="tokenb">Submit</button><button id="tokenb">Löschen</button>
+					<input type="text" id="tokenid" placeholder="TokenId"><button id="tokenb">Submit</button><button id="deltokenb">Löschen</button>
 				</div>
   				
 
@@ -108,12 +108,16 @@
 			<script>
 
 				let tokenmodel = [];
-				
+				//const Token = document.getElementById("tokenid").value;
+				//const mytoken = Token+".0";
 
 				window.addEventListener("DOMContentLoaded", init);
 
+				
+
 			async function init() {
 				await getTokenitem();
+
 				//rendertoken();
 
 			}
@@ -121,18 +125,42 @@
 
 			async function getTokenitem() {
 				const tokenbutton = document.getElementById("tokenb");
+				const deltokenbutton = document.getElementById("deltokenb");
+			
+
 				tokenbutton.addEventListener("click", async (clickEvent) => {
 					clickEvent.preventDefault();
 
 					await loadtokenfrombackend();
 					rendertoken();
 				})
+				deltokenbutton.addEventListener("click", async (clickEvent) => {
+					clickEvent.preventDefault();
+					deleteTokenItem();
+				})
+
+
 			}
 
 
+			async function deleteTokenItem() {
+				const Token = document.getElementById("tokenid").value;
+				const mytoken = Token+".0";
+				console.log(mytoken);
+
+				const delURL = "/v1/immo/" + mytoken;
+				await fetch(delURL, {
+					method: "DELETE"
+				});
+
+
+
+			}
+
+		
 			function rendertoken() {
-				const Token = document.getElementById("tokenid");
-				const mytoken = Token.value+"."+0;
+				const Token = document.getElementById("tokenid").value;
+				const mytoken = Token+".0";
 				const main81 = document.getElementById("main8.1"); 
 				//idvals = Object.values(tokenmodel);
 				//console.log(idvals);
