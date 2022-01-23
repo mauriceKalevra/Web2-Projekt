@@ -94,7 +94,7 @@
 				
 				</div>
 				<div class="row myrow4 justify-content-center align-items-center">
-					<div class="col-0">
+					<div class="col-0" id="SearchTyp">
 						<select>
 							<option value=””>Mieten</option>
 							<option value=””>Kaufen</option>
@@ -102,9 +102,9 @@
 					</div>
 					<div class="col-4">
 
-						<input class="form-control" id="myInput" type="text" placeholder="Wo: Ort, Straße">
+						<input class="form-control" id="SearchOrt" type="text" placeholder="Wo: Ort">
 					</div>
-					<div class="col-0">
+					<div class="col-0" id="SearchImmoTyp">
 						<select>
 							<option value=””>Wohnung</option>
 							<option value=””>Haus</option>
@@ -113,26 +113,65 @@
 				</div>
 				<div class="row myrow justify-content-center align-items-center">
 						<div class="col-0">
-							<input class="form-control" id="myInput" type="text" placeholder="Preis bis">
+							<input class="form-control" id="SearchPreis" type="text" placeholder="Preis bis">
 
 						</div>
 						<div class="col-2">
-							<input class="form-control" id="myInput" type="text" placeholder="Zimmer">
+							<input class="form-control" id="SearchZimmer" type="text" placeholder="Zimmer">
 
 						</div>
 						<div class="col-2">
-							<input class="form-control" id="myInput" type="text" placeholder="Fläche ab">
+							<input class="form-control" id="SearchFlaeche" type="text" placeholder="Fläche ab">
 						</div>
 
 
 				</div>
 				<div class="row myrow6 justify-content-end align-items-center">
-					<div class="col-4"><a href="finde.html"><button type="submit" name="submit" class="btn btn-primary offset-md-1">Suche</button></a></div>
+					<div class="col-4"><a href="finde.html"><button id="submitButton" type="submit" name="submit" class="btn btn-primary offset-md-1">Suche</button></a></div>
 				</div>
 				
 
-
 			</main2>
+			<script>
+				//getElementByIDs in variable speichern und trimmen
+				function registerClickEventForSubmitButton(){
+                        const submitButton = document.getElementById("submitButton");
+                        submitButton.addEventListener("click", async (clickEvent) => {
+                            clickEvent.preventDefault();
+
+                            const inSearchTyp = document.getElementById("SearchTyp")
+                            const StringSearchTyp = inSearchTyp.options[inSearchTyp.selectedIndex].text.trim();
+
+                            const inSearchOrt = document.getElementById("SearchOrt")
+                            const StringSearchort = inSearchOrt.value.trim();
+
+                            const inImmoTyp = document.getElementById("SearchImmoTyp")
+                            const StringSearchImmoTyp = inImmoTyp.options[inImmoTyp.selectedIndex].text.trim();
+
+                            const inSearchPreis = document.getElementById("SearchTyp")
+                            const StringSearchPreis = inSearchPreis.value.trim();
+
+                            const inSearchZimmer = document.getElementById("SearchZimmer")
+                            const StringSearchZimmer = inSearchZimmer.value.trim();
+
+                            const inSearchFlaeche = document.getElementById("SearchFlaeche")
+                            const StringSearchFlaeche = inSearchFlaeche.value.trim();
+
+                        });
+                    }
+
+					document.getElementById("submitButton").onclick = () => {
+						//Suhbegriff
+						let searchTerm = document.getElementById("myInput").value
+	
+							let url = new URL('http://localhost:1337/v1/search')
+							let params = { term: searchTerm }
+							url.search = new URLSearchParams(params).toString();
+							fetch(url)
+						.then(res => console.log(res.body))
+}
+
+			</script>
 			
 			<!--FOOTER-->
 			
