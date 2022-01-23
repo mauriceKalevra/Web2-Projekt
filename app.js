@@ -33,9 +33,9 @@ app.get("/biete", async (req, res) => {
 })
 //für Suche, noch nicht ganz fertig
 app.get("/v1/search/", async (req, res) => {
-	const searchTerm = req.query,term;
-	const immodaten = immodb.prepare("SELECT * FROM angebotstyp=$StringSearchTyp AND objekt = $StringImmoTyp AND ort = $StringSearchOrt AND preis <= $StringSearchPreis AND zimmer >= $StringSearchZimmer AND flaeche >= $StringSearchFleache").run(searchTerm);
-	res.status(200).send(immodaten);
+  const searchTerm = req.query,term;
+  const immodaten = immodb.prepare("SELECT * FROM angebotstyp=$StringSearchTyp AND objekt = $StringImmoTyp AND ort = $StringSearchOrt AND preis <= $StringSearchPreis AND zimmer >= $StringSearchZimmer AND flaeche >= $StringSearchFleache").run(searchTerm);
+  res.status(200).send(immodaten);
 })
 
 app.listen(port, () => {
