@@ -133,44 +133,86 @@
 
 			</main2>
 			<script>
-				//getElementByIDs in variable speichern und trimmen
-				function registerClickEventForSubmitButton(){
-                        const submitButton = document.getElementById("submitButton");
-                        submitButton.addEventListener("click", async (clickEvent) => {
-                            clickEvent.preventDefault();
+			app.post("v1/suche", async (req, res) => {
+				suchitem = req.body;
+				immodb.query("SELECT * FROM Immobilie WHERE ort==suchitem")
+			})
 
-                            const inSearchTyp = document.getElementById("SearchTyp")
-                            const StringSearchTyp = inSearchTyp.options[inSearchTyp.selectedIndex].text.trim();
+			window.addEventListener("DOMContentLoaded", init);
 
-                            const inSearchOrt = document.getElementById("SearchOrt")
-                            const StringSearchort = inSearchOrt.value.trim();
+                	async function init() {
+                    		suche();
+        		}
 
-                            const inImmoTyp = document.getElementById("SearchImmoTyp")
-                            const StringSearchImmoTyp = inImmoTyp.options[inImmoTyp.selectedIndex].text.trim();
+                	function suche() {
+                    		const ort = document.getElementById("ort");
+                    		const newsearch = {
+                        	Ort: ort 
+                    	};
 
-                            const inSearchPreis = document.getElementById("SearchTyp")
-                            const StringSearchPreis = inSearchPreis.value.trim();
+                    	await sendtobackend(suche)
+                	}
 
-                            const inSearchZimmer = document.getElementById("SearchZimmer")
-                            const StringSearchZimmer = inSearchZimmer.value.trim();
+                	async function sendtobackend(suche) {
+                    		await fetch("v1/suche", {
+                        		method: "POST",
+                        		headers: {
+                            		"content-type": "application/json",
+                        	},
+                        	body: JSON.stringify(suche)
+                    	});
+                	}
 
-                            const inSearchFlaeche = document.getElementById("SearchFlaeche")
-                            const StringSearchFlaeche = inSearchFlaeche.value.trim();
+			function removeform() {
+				const delform = document.getElementById("myform");
+					delform.remove();
+			}
 
-                        });
-                    }
+			function render(){
+				const endcard = document.createElement("h1");
+		 		endcard.innerText = "Ihre Suchergebnisse:";
+		  		endcard.style.textAlign = "center";
+		  		const main2 = document.getElementById("main2");
+		  		main2.append(endcard);
+			}
+					
+			//getElementByIDs in variable speichern und trimmen
+			function registerClickEventForSubmitButton(){
+				const submitButton = document.getElementById("submitButton");
+				submitButton.addEventListener("click", async (clickEvent) => {
+					clickEvent.preventDefault();
 
-					document.getElementById("submitButton").onclick = () => {
-						//Suhbegriff
-						let searchTerm = document.getElementById("myInput").value
-	
-							let url = new URL('http://localhost:1337/v1/search')
-							let params = { term: searchTerm }
-							url.search = new URLSearchParams(params).toString();
-							fetch(url)
-						.then(res => console.log(res.body))
-}
+					const inSearchTyp = document.getElementById("SearchTyp")
+					const StringSearchTyp = inSearchTyp.options[inSearchTyp.selectedIndex].text.trim();
 
+					const inSearchOrt = document.getElementById("SearchOrt")
+					const StringSearchort = inSearchOrt.value.trim();
+
+					const inImmoTyp = document.getElementById("SearchImmoTyp")
+					const StringSearchImmoTyp = inImmoTyp.options[inImmoTyp.selectedIndex].text.trim();
+
+					const inSearchPreis = document.getElementById("SearchTyp")
+					const StringSearchPreis = inSearchPreis.value.trim();
+
+					const inSearchZimmer = document.getElementById("SearchZimmer")
+					const StringSearchZimmer = inSearchZimmer.value.trim();
+
+					const inSearchFlaeche = document.getElementById("SearchFlaeche")
+					const StringSearchFlaeche = inSearchFlaeche.value.trim();
+
+				});
+			}
+					
+			document.getElementById("submitButton").onclick = () => {
+                        	//Suchbegriff
+                        	let searchTerm = document.getElementById("whichInputs? - SearchTyp").value
+
+                           	let url = new URL('http://localhost:1337/v1/search')
+                            	let params = { term: searchTerm }
+                           url.search = new URLSearchParams(params).toString();
+                           fetch(url)
+				   .then(res => console.log(res.body))
+			}
 			</script>
 			
 			<!--FOOTER-->
