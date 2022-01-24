@@ -140,16 +140,19 @@
 
 			window.addEventListener("DOMContentLoaded", init);
 
-                	async function init() {
+                	// Kann weg??
+			async function init() {
                     		suche();
         		}
 
+			// Kann weg??
                 	function suche() {
                     		const ort = document.getElementById("ort");
                     		const newsearch = {
                         	Ort: ort 
                     	};
-
+			
+			// Weg?
                     	await sendtobackend(suche)
                 	}
 
