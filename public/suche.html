@@ -77,104 +77,119 @@
 
 				
 			</header>
-
 			<!--CONTENT/MAIN-->
-
-			<main2>
-				
-					<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
-						<div class="container">
-						  <div class="row justify-content-center align-items-center">
-							<h1 id="logo-text">Immobilien-Suche</h1>
-						  </div>
-						  <div class="row justify-content-center align-items-center">
-							<p id="logo-subtext">Immobilien-Suche</p>
-						  </div>
-						</div>
-				
-				</div>
-				<div class="row myrow4 justify-content-center align-items-center">
-					<div class="col-0" id="SearchTyp">
-						<select>
-							<option value=””>Mieten</option>
-							<option value=””>Kaufen</option>
-							</select>
+			<body>
+				<main2>
+					
+						<div class="jumbotron jumbotron-fluid" style="margin-bottom: 0px;">
+							<div class="container">
+							<div class="row justify-content-center align-items-center">
+								<h1 id="logo-text">Immobilien-Suche</h1>
+							</div>
+							<div class="row justify-content-center align-items-center">
+								<p id="logo-subtext">Immobilien-Suche</p>
+							</div>
+							</div>
+					
 					</div>
-					<div class="col-4">
-
-						<input class="form-control" id="SearchOrt" type="text" placeholder="Wo: Ort">
-					</div>
-					<div class="col-0" id="SearchImmoTyp">
-						<select>
-							<option value=””>Wohnung</option>
-							<option value=””>Haus</option>
-							</select>
-					</div>
-				</div>
-				<div class="row myrow justify-content-center align-items-center">
+					<div class="row myrow4 justify-content-center align-items-center">
 						<div class="col-0">
-							<input class="form-control" id="SearchPreis" type="text" placeholder="Preis bis">
-
+							<select id="SearchTyp">
+								<option value="">Mieten</option>
+								<option value="">Kaufen</option>
+								</select>
 						</div>
-						<div class="col-2">
-							<input class="form-control" id="SearchZimmer" type="text" placeholder="Zimmer">
+						<div class="col-4">
 
+							<input class="form-control" id="SearchOrt" type="text" placeholder="Wo: Ort, Straße">
 						</div>
-						<div class="col-2">
-							<input class="form-control" id="SearchFlaeche" type="text" placeholder="Fläche ab">
+						<div class="col-0">
+							<select id="SearchImmoTyp">
+								<option value="">Wohnung</option>
+								<option value="">Haus</option>
+								</select>
 						</div>
+					</div>
+					<div class="row myrow justify-content-center align-items-center">
+							<div class="col-0">
+								<input class="form-control" id="SearchPreis" type="text" placeholder="Preis bis">
+
+							</div>
+							<div class="col-2">
+								<input class="form-control" id="SearchZimmer" type="text" placeholder="Zimmer ab">
+
+							</div>
+							<div class="col-2">
+								<input class="form-control" id="SearchFlaeche" type="text" placeholder="Fläche ab">
+							</div>
 
 
-				</div>
-				<div class="row myrow6 justify-content-end align-items-center">
-					<div class="col-4"><a href="finde.html"><button id="submitButton" type="submit" name="submit" class="btn btn-primary offset-md-1">Suche</button></a></div>
-				</div>
-				
+					</div>
+					<div class="row myrow6 justify-content-end align-items-center">
+						<div class="col-4"><button id="submitButton" type="submit" name="submit" class="btn btn-primary offset-md-1">Suche</button></div>
+					</div>
+					<div id="results">
 
-			</main2>
-			<script>
-				//getElementByIDs in variable speichern und trimmen
-				function registerClickEventForSubmitButton(){
-                        const submitButton = document.getElementById("submitButton");
-                        submitButton.addEventListener("click", async (clickEvent) => {
-                            clickEvent.preventDefault();
+					</div>
+					<!--
+						finde.html muss ganz weg, suche muss mit DB verknüpft werden und von da dann die "Wohnungen" die aus Biete eingefügt wurden!
+						Fragen an Mo:
+							Was sind die "Tags" nach denen man sucht, zb. Ort wo Wohnung ist usw.
+							Kann Finde.html weg?
+					-->
+				</main2>
+				<script>
 
-                            const inSearchTyp = document.getElementById("SearchTyp")
-                            const StringSearchTyp = inSearchTyp.options[inSearchTyp.selectedIndex].text.trim();
+					function removeform() {
+						const delform = document.getElementById("myform");
+						delform.remove();
+					}
 
-                            const inSearchOrt = document.getElementById("SearchOrt")
-                            const StringSearchort = inSearchOrt.value.trim();
+					function render(){
+						const endcard = document.createElement("h1");
+		 				endcard.innerText = "Ihre Suchergebnisse:";
+		  				endcard.style.textAlign = "center";
+		  				const main2 = document.getElementById("main2");
+		  				main2.append(endcard);
+					}
+					
+					//getElementByIDs in variable speichern und trimmen
+					function registerClickEventForSubmitButton(){
+						const submitButton = document.getElementById("submitButton");
+						submitButton.addEventListener("click", async (clickEvent) => {
+							clickEvent.preventDefault();
 
-                            const inImmoTyp = document.getElementById("SearchImmoTyp")
-                            const StringSearchImmoTyp = inImmoTyp.options[inImmoTyp.selectedIndex].text.trim();
+							const inSearchTyp = document.getElementById("SearchTyp")
+							
+							const StringSearchTyp = inSearchTyp.options[inSearchTyp.selectedIndex].text.trim();
 
-                            const inSearchPreis = document.getElementById("SearchTyp")
-                            const StringSearchPreis = inSearchPreis.value.trim();
+							const inSearchOrt = document.getElementById("SearchOrt")
+							const StringSearchOrt = inSearchOrt.value.trim();
 
-                            const inSearchZimmer = document.getElementById("SearchZimmer")
-                            const StringSearchZimmer = inSearchZimmer.value.trim();
+							const inImmoTyp = document.getElementById("SearchImmoTyp")
+							
+							const StringSearchImmoTyp = inImmoTyp.options[inImmoTyp.selectedIndex].text.trim();
 
-                            const inSearchFlaeche = document.getElementById("SearchFlaeche")
-                            const StringSearchFlaeche = inSearchFlaeche.value.trim();
+							const inSearchPreis = document.getElementById("SearchPreis")
+							const StringSearchPreis = inSearchPreis.value.trim();
 
-                        });
-                    }
+							const inSearchZimmer = document.getElementById("SearchZimmer")
+							const StringSearchZimmer = inSearchZimmer.value.trim();
 
-					document.getElementById("submitButton").onclick = () => {
-						//Suhbegriff
-						let searchTerm = document.getElementById("myInput").value
-	
-							let url = new URL('http://localhost:1337/v1/search')
-							let params = { term: searchTerm }
-							url.search = new URLSearchParams(params).toString();
-							fetch(url)
-						.then(res => console.log(res.body))
-}
+							const inSearchFlaeche = document.getElementById("SearchFlaeche")
+							const StringSearchFlaeche = inSearchFlaeche.value.trim();
 
-			</script>
-			
-			<!--FOOTER-->
-			
+                            let url = new URL('http://localhost:1337/v1/search')
+                            let params = { typ: StringSearchTyp, ort: StringSearchOrt, immotyp: StringSearchImmoTyp, preis: StringSearchPreis, zimmer: StringSearchZimmer, flaeche: StringSearchZimmer}
+                            url.search = new URLSearchParams(params).toString();
+                            fetch(url)
+                        		.then(res => console.log(res.body))
+						});
+					}
+					registerClickEventForSubmitButton();
+				</script>
+				<!--FOOTER-->
+			</body>
 			<footer>
 				
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">

@@ -3,6 +3,7 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 var port = 1337;
 var path = require('path');
+const { isModuleNamespaceObject } = require('util/types');
 var immodb = require('better-sqlite3')("immobilie.db"); 
 //var cookieParser = require('cookie-parser');
 
@@ -32,9 +33,11 @@ app.get("/biete", async (req, res) => {
   })
 })
 //für Suche, noch nicht ganz fertig
-app.get("/v1/search/", async (req, res) => {
-  const searchTerm = req.query,term;
-  const immodaten = immodb.prepare("SELECT * FROM angebotstyp=$StringSearchTyp AND objekt = $StringImmoTyp AND ort = $StringSearchOrt AND preis <= $StringSearchPreis AND zimmer >= $StringSearchZimmer AND flaeche >= $StringSearchFleache").run(searchTerm);
+app.get("/v1/search", async (req, res) => {
+  const { typ, ort, immotyp, preis, zimmer, flaeche } = req.query
+  console.log(req.query);
+  const immodaten = immodb.prepare("SELECT * FROM Immobilie WHERE angebotstyp=? AND ort=? AND objekt=? AND preis<=? AND zimmer>=? AND flaeche>=?").all(typ, ort, immotyp, preis, zimmer, flaeche);
+  
   res.status(200).send(immodaten);
 })
 
