@@ -4,6 +4,7 @@ const res = require('express/lib/response');
 const { IncomingMessage } = require('http');
 var port = 1337;
 var path = require('path');
+//const { isModuleNamespaceObject } = require('util/types');
 var immodb = require('better-sqlite3')("immobilie.db"); 
 //var cookieParser = require('cookie-parser');
 
@@ -12,7 +13,8 @@ var app = express()
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
-//app.use(logger('dev'));
+var logger = require("morgan");
+app.use(logger('dev'));
 
 // ließt aus dem public folder die index.hmtl aus und stellt diese dar!
 app.use(express.static(path.join(__dirname, 'public')));
@@ -52,8 +54,17 @@ app.get("/biete", async (req, res) => {
     root: path.join(__dirname, './public')
   })
 })
+//für Suche, noch nicht ganz fertig
+app.get("/v1/search", async (req, res) => {
+  const { typ, ort, immotyp, preis, zimmer, flaeche } = req.query
+  console.log(req.query);
+  const immodaten = immodb.prepare("SELECT * FROM Immobilie WHERE angebotstyp=? AND ort=? AND objekt=? AND preis<=? AND zimmer>=? AND flaeche>=?").all(typ, ort, immotyp, preis, zimmer, flaeche);
+  
+  res.status(200).send(immodaten);
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
 
