@@ -4,7 +4,7 @@ const res = require('express/lib/response');
 const { IncomingMessage } = require('http');
 var port = 1337;
 var path = require('path');
-const { isModuleNamespaceObject } = require('util/types');
+//const { isModuleNamespaceObject } = require('util/types');
 var immodb = require('better-sqlite3')("immobilie.db"); 
 //var cookieParser = require('cookie-parser');
 

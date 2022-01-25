@@ -92,16 +92,19 @@
 							</div>
 					
 					</div>
+					<div style="width: 100%; text-align: center; margin-top: 15px;">
+						Bitte alle Werte eingeben!
+					</div>
 					<div class="row myrow4 justify-content-center align-items-center">
 						<div class="col-0">
 							<select id="SearchTyp">
-								<option value="">Mieten</option>
-								<option value="">Kaufen</option>
+								<option value="">Vermieten</option>
+								<option value="">Verkaufen</option>
 								</select>
 						</div>
 						<div class="col-4">
 
-							<input class="form-control" id="SearchOrt" type="text" placeholder="Wo: Ort, Straße">
+							<input class="form-control" id="SearchOrt" type="text" placeholder="Wo: Ort">
 						</div>
 						<div class="col-0">
 							<select id="SearchImmoTyp">
@@ -140,11 +143,20 @@
 				</main2>
 				<script>
 
+					
+					window.addEventListener("DOMContentLoaded", init);
+
+					async function init() {
+						registerClickEventForSubmitButton();
+					}
+
+
+					//Zum Testen
 					function removeform() {
 						const delform = document.getElementById("myform");
 						delform.remove();
 					}
-
+					//Zum Testen
 					function render(){
 						const endcard = document.createElement("h1");
 		 				endcard.innerText = "Ihre Suchergebnisse:";
@@ -158,6 +170,7 @@
 						const submitButton = document.getElementById("submitButton");
 						submitButton.addEventListener("click", async (clickEvent) => {
 							clickEvent.preventDefault();
+							document.getElementById("results").innerHTML=""
 
 							const inSearchTyp = document.getElementById("SearchTyp")
 							
@@ -182,11 +195,51 @@
                             let url = new URL('http://localhost:1337/v1/search')
                             let params = { typ: StringSearchTyp, ort: StringSearchOrt, immotyp: StringSearchImmoTyp, preis: StringSearchPreis, zimmer: StringSearchZimmer, flaeche: StringSearchZimmer}
                             url.search = new URLSearchParams(params).toString();
-                            fetch(url)
-                        		.then(res => console.log(res.body))
+                            
+							
+							const res = await fetch(url);
+							const results = await res.json()
+							if(results.length == 0){
+								const noresult = document.createElement("p");
+								noresult.innerText= "Kein Ergebnis gefunden!";
+								noresult.align = "center";
+								document.getElementById("results").appendChild(noresult);
+								return 
+							}
+							results.forEach(immo => {
+								let div = document.createElement("div")
+								div.classList.add("row")
+								div.classList.add("myrow")
+								div.classList.add("justify-content-center")
+								let table = document.createElement("table")
+								table.style.width = "30%"
+								let tr1 = document.createElement("tr")
+								let th1 = document.createElement("th")
+								th1.innerText = immo.ort
+								tr1.appendChild(th1)
+								let tr2 = document.createElement("tr")
+								let td2 = document.createElement("td")
+								tr2.appendChild(td2)
+								let tr3 = document.createElement("tr")
+								let td3_1 = document.createElement("th")
+								td3_1.innerText = "Kaltmiete: " + immo.preis + "€"
+								tr3.appendChild(td3_1)
+								let td3_2 = document.createElement("th")
+								td3_2.innerText = "Wohnfläche: " + immo.flaeche + "m²"
+								tr3.appendChild(td3_2)
+								let td3_3 = document.createElement("th")
+								td3_3.innerText = "Zimmer: " + immo.zimmer
+								tr3.appendChild(td3_3)
+								table.appendChild(tr1)
+								table.appendChild(tr2)
+								table.appendChild(tr3)
+								div.appendChild(table)
+								document.getElementById("results").appendChild(div)
+							}); 
+							//removeform();
 						});
 					}
-					registerClickEventForSubmitButton();
+					//registerClickEventForSubmitButton();
 				</script>
 				<!--FOOTER-->
 			</body>
