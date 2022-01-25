@@ -18,6 +18,8 @@
   "homepage": "https://github.com/mauriceKalevra/Web2-Projekt#readme",
   "dependencies": {
     "better-sqlite3": "^7.4.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "util": "^0.12.4"
   }
 }
