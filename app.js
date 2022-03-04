@@ -64,7 +64,7 @@ app.get("/v1/search", async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Real_estate is live and going @ http://localhost:${port}`)
+  console.log(`Real_estate is live and listening @http://localhost:${port}\nIn case you're using Docker, dont forget to set Port-forwarding when running the docker container --> docker run -p localport:1337 `)
 })
 
 
