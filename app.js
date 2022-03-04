@@ -64,7 +64,7 @@ app.get("/v1/search", async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Real_estate is live and going @ http://localhost:${port}`)
 })
 
 
