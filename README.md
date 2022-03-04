@@ -1,8 +1,8 @@
 # Web2-Projekt
-Uni-Projekt for the Web-Application 2 module
+Uni-Projekt for the Web-Application 2 module  
 The Application can be run 'locally' or via docker
 
-***'Locally via node'***
+***'Locally' via node:***
 
 **Prerequisites**   
 Die Anwendung wurde unter folgender Node-Version getestet.  
@@ -37,11 +37,11 @@ Bei node-package Problemen gegenbenfalls neuinstallieren und anschließen rebuil
 Im Browser nun die Webseite aufrufen:  
 localhost:1337
 
-**Run via docker**
-docker build -t customname .
-docker run -p (localport:applicationport) --> 5000:1337
+**Run via docker:**  
+docker build -t customname .  
+docker run -p (localport:applicationport) --> 5000:1337    
 
-Im Browser nun die Anwendung aufrufen:
+Im Browser nun die Anwendung aufrufen:  
 localhost:5000
 
 
