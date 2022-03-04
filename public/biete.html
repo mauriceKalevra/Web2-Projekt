@@ -28,7 +28,6 @@
 			<!--HEADER-->
 
 			<header>
-				<p class="tel"><bl>+49 1664254545</bl></p>
 
 				<div class="myNav">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -161,6 +160,8 @@
 			saveButton.addEventListener("click", async (clickEvent) => {
 				clickEvent.preventDefault();
 
+				await validate();
+
 				const inangebot = document.getElementById("angebotstyp");
 				//const invalue = inangebot.options[inangebot.selectedIndex].value;
 				const angebot = inangebot.options[inangebot.selectedIndex].text.trim();
@@ -191,6 +192,15 @@
 			});
 		}
 
+		function validate(item1, item2, item3, item4, item)
+		
+		
+		
+		
+		
+		
+		
+		
 		function removeform() {
 			const delform = document.getElementById("myform");
 			delform.remove();
