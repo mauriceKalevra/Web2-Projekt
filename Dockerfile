@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
+RUN cat cat schema.sql | sqlite3 immobilie.db
+
 RUN npm install
 RUN npm install express
 RUN npm install better-sqlite3
