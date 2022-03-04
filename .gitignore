@@ -1,9 +1,6 @@
 #ignore JSON files
 *.json
 
-#infore db files
-.*db
-immobilie.db
 
 #ignore node_modules
 node_modules
