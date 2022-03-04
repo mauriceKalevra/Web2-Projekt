@@ -39,7 +39,7 @@ localhost:1337
 
 **Run via docker:**  
 docker build -t customname .  
-docker run -p (localport:applicationport) --> 5000:1337    
+docker run -p (localport:applicationport) --> 5000:1337 customname
 
 Im Browser nun die Anwendung aufrufen:  
 localhost:5000
