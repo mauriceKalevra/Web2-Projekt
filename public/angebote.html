@@ -126,7 +126,7 @@
 
 
 			async function loadimmofrombackend() {
-				const response = await fetch("http://localhost:1337/v1/angebote");
+				const response = await fetch("/v1/angebote");
 				const immoJson = await response.json();
 
 				if(immoJson) {

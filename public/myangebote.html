@@ -227,7 +227,7 @@ main81.appendChild(table);
 
 
 			async function loadtokenfrombackend() {
-				const response = await fetch("http://localhost:1337/v1/angebote");
+				const response = await fetch("/v1/angebote");
 				const TokenJson = await response.json();
 
 				if(TokenJson) {
